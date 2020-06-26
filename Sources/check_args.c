@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <check_args.h>
 
 int check_args(int argc, char *argv[]){
 	printf("argc=%i\n", argc);
