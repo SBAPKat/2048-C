@@ -1,6 +1,8 @@
 #ifndef RANDOMCASE_H
 #define RANDOMCASE_H
-
+#include <stdlib.h> //random
+#include <stdio.h> //random seed
+#include <time.h> //debug
 
 
 
