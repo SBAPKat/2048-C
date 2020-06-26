@@ -1,3 +1,4 @@
+#include <randomcase.h> //Header file
 #include <stdlib.h>//random
 #include <time.h>  //random seed
 #include <stdio.h> //debug
