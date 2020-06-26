@@ -4,7 +4,7 @@
 void printMatrix (int lineNumber, int columnNumber, int** matrix){
 	for (int i=0;i<lineNumber;i++){
 		for (int j=0;j<columnNumber;j++){
-			printf(" %d ;",matrix[i][j]);
+			printf(" %d |",matrix[i][j]);
 		}
 		printf("\n");
 	}

@@ -6,8 +6,10 @@
 int main(int argc, char** argv){
 	int** GameMatrix = generateMatrix(4,4);
 	printMatrix (4,4,GameMatrix);
-	
-	
-	
+    GenCase (GameMatrix);	
+	printMatrix (4,4,GameMatrix);
+    GenCase (GameMatrix);	
+	printMatrix (4,4,GameMatrix);
+    GenCase (GameMatrix);	
 	return EXIT_SUCCESS;
 	}
