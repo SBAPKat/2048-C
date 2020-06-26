@@ -14,15 +14,16 @@ int check_args(int argc, char *argv[]){
 				break;
 			}
 		}
-			
-	}
-	if(valid_chars==4){
+	    if(valid_chars==4){
 		printf("SDL SELECTED");
 		return 2; //SDL OPTION SELECTED
-
+    	}	
+        else{
+		    printf("ERROR");
+            return -1;
+        }
 	}
 	else{
-		printf("valid=%i\n",valid_chars);
-		printf("ERROR");
+	    return 1; //CMD OPTION SELECTED
 	}
 }
