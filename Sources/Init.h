@@ -1,3 +1,6 @@
+#ifndef INIT_H
+#define INIT_H
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -9,4 +12,6 @@
  * @return the newly initialized matrix
  */
 int** generateMatrix (int lineNumber,int columnNumber);
-	 
+
+
+#endif	 
