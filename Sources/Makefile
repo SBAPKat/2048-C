@@ -62,7 +62,7 @@ $(TARGET): $(EXESOURCEOFILE) $(LIBTARGET) $(LIBTARGET2) $(LIBTARGET3) $(LIBTARGE
 	@tput setaf ${COLOR} #setting color
 	@echo "\n Generating the executable " $@ "from " $<
 	@tput sgr0 #resetting color settings
-	$(CXX) $(EXESOURCEOFILE) -l$(LIBCORENAME) -l$(LIBCORENAME2) -l$(LIBCORENAME3) -l$(LIBCORENAME4)   $(LIBSDIR) -o $(TARGET) -lm
+	$(CXX) $(EXESOURCEOFILE) -l$(LIBCORENAME) -l$(LIBCORENAME2) -l$(LIBCORENAME3) -l$(LIBCORENAME4)   $(LIBSDIR) -o $(TARGET) -lm -lncurses
 
 #Generating the 1st library binary code
 # libmenu.so : menu.o
