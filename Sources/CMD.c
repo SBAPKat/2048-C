@@ -2,7 +2,7 @@
 
 void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
     int i, y;
-    for(i=0;i<=col-1;i=i+(col-1)/4){                      //prints outer vertical boundaries
+    for(i=0;i<=row*2-1;i=i+(row*2-1)/4){                      //prints outer vertical boundaries
         for(y=1;y<=row;y++){
             mvaddch(y,i,'|');
         }
@@ -13,7 +13,7 @@ void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
 void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col){
     int i, y;
     for(i=0;i<=row-1;i=i+(row-1)/4){                      //prints horizontal boundaries
-        for(y=0;y<=col;y++){
+        for(y=0;y<=row*2-2;y++){
             mvaddch(i,y,'_');
         }
     }
