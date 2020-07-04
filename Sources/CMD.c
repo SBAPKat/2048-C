@@ -1,5 +1,24 @@
 #include <ncurses.h>
 
+void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
+    int i, y;
+    for(i=0;i<=col-1;i=i+(col-1)/4){                      //prints outer vertical boundaries
+        for(y=1;y<=row;y++){
+            mvaddch(y,i,'|');
+        }
+    }
+    
+}
+
+void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col){
+    int i, y;
+    for(i=0;i<=row-1;i=i+(row-1)/4){                      //prints horizontal boundaries
+        for(y=0;y<=col;y++){
+            mvaddch(i,y,'_');
+        }
+    }
+}
+
 int main(){
     int keypress;
     int row, col, i=0, y=0;
@@ -11,16 +30,8 @@ int main(){
     while(1){
         clear();
         getmaxyx(stdscr,row,col);
-        for(i=0;i<=row-1;i=i+row-1){                      //prints horizontal boundaries
-            for(y=0;y<=col;y++){
-                mvaddch(i,y,'_');
-            }
-        }
-        for(i=0;i<=col-1;i=i+col-1){                      //prints vertical boundaries
-            for(y=1;y<=row;y++){
-                mvaddch(y,i,'|');
-            }
-        }
+        Print_Horizontal_Boundaries(stdscr,row,col);
+        Print_Vertical_Boundaries(stdscr,row,col);
         refresh();
         keypress = getch();
         if(keypress== 'q') break;
@@ -28,6 +39,10 @@ int main(){
     endwin();
     return 1;
 }
+
+
+
+
 /*
 void printMatrix (int lineNumber, int columnNumber, int** matrix){
     printf("_________________\n");
