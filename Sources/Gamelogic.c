@@ -15,7 +15,7 @@ void printMatrix (int lineNumber, int columnNumber, int** matrix){
 
 
 /*
- * This series of protocol is used to print in color, but it only works if we are on specified OS
+ * This series of protocols are used to print in color, but only work if we are on specified OS
  */
 void magenta (int bold){
 	#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
@@ -52,5 +52,11 @@ void cyan (int bold){
 	#if defined(__linux__) || defined(__unix__) || defined(__APPLE__)
 		printf("\033[%d;36m",bold);
    	#endif
+}
+
+
+int defeat(int number_case){
+    if(number_case>=16) return 1;
+    else return 0;
 }
 

@@ -23,5 +23,6 @@ void blue(int bold);
 void red(int bold);
 void cyan (int bold);
 
+int defeat(int number_case);
 
 #endif

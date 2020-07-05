@@ -1,5 +1,7 @@
 #include <ncurses.h>
 #include "randomcase.h"
+#include "Gamelogic.h"
+#include "Init.h"
 
 #define EXIT_SUCCESS 0
 void  Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
@@ -38,12 +40,20 @@ void Print_Cases(int row, int col, int** GameMatrix){
     }
 }
 
+void Display_Defeat(int row,int col){
+    clear();
+    mvprintw(row/2,(col-13)/2,"You have lost");
+    mvprintw(row/2+1,(col-25)/2,"Press spacebar to restart");
+    refresh();
+    while(getch()!=' '){}
+    clear();
+}
+
 
 
 int mainCMD(int** GameMatrix){
     int keypress;
-    int row, col;
-    timeout(0);
+    int row, col, number_case=0;
     initscr(); //initialises the ncurses screen
     raw(); //Control keys don't generate signals, line buffering disabled
     noecho(); //prevents keystrokes from being echo'ed to terminal
@@ -67,30 +77,48 @@ int mainCMD(int** GameMatrix){
                 return EXIT_SUCCESS;
                 break;
 
-            case 'a':
-                GenCase (GameMatrix);
-                break;
-            
             case KEY_LEFT:
-                //move left
-                GenCase (GameMatrix);
+                //number_case-=move left();
+                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                    endwin();
+                    return 1;}
+                else GenCase (GameMatrix);
+                number_case++;
                 break;
 
             case KEY_RIGHT:
-                //move right
-                GenCase (GameMatrix);
+                //number_case-=move right();
+                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                    endwin();
+                    return 1;}
+                else GenCase (GameMatrix);
+                number_case++;
                 break;
 
             case KEY_UP:
-                //move up
-                GenCase (GameMatrix);
+                //number_case-=move up();
+                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                    endwin();
+                    return 1;}
+                else GenCase (GameMatrix);
+                number_case++;
                 break;
 
             case KEY_DOWN:
-                //move down
-                GenCase (GameMatrix);
+                //number_case-=move down();
+                if(defeat (number_case)==1) {Display_Defeat(row,col);
+                    endwin();
+                    return 1;}
+                else GenCase (GameMatrix);
+                number_case++;
+                break;
+
+            case 'l':
+                Display_Defeat(row,col);
                 break;
         }
+        mvprintw(row-1, col/2, "There are %icases", number_case);
+        refresh();
     }
 }
 
