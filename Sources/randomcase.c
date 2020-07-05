@@ -1,4 +1,4 @@
-#include <randomcase.h> //Header file
+#include "randomcase.h" //Header file
 
 void GenCase(int** GameMatrix){
 	int random, RandA, RandB;

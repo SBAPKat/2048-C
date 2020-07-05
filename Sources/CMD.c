@@ -1,4 +1,6 @@
-void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
+#include <ncurses.h>
+#define EXIT_SUCCESS 0
+void  Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
     int i, y;
     for(i=0;i<=row*2-1;i=i+(row*2-1)/4){                      //prints outer vertical boundaries
         for(y=1;y<=row;y++){
@@ -19,7 +21,7 @@ void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col){
 
 int mainCMD(){
     int keypress;
-    int row, col, i=0, y=0;
+    int row, col;
     timeout(0);
     initscr(); //initialises the ncurses screen
     raw(); //Control keys don't generate signals, line buffering disabled

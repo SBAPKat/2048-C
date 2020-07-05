@@ -1,7 +1,8 @@
-#include <randomcase.h>
-#include <Init.h>
-#include <Gamelogic.h>
-#include <check_args.h>
+#include "randomcase.h"
+#include "Init.h"
+#include "Gamelogic.h"
+#include "check_args.h"
+#include "CMD.h"
 
 int main(int argc, char** argv){
 	int** GameMatrix = generateMatrix(4,4);
