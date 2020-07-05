@@ -3,7 +3,6 @@
 int check_args(int argc, char *argv[]){
 	printf("argc=%i\n", argc);
 	int valid_chars=0;
-	printf("%s\n",argv[1]);
 	if(argc==2){
 		char* SDL_option = "-SDL";
 		printf("%s\n",SDL_option);

@@ -4,7 +4,7 @@ CFLAGS= -Wall -Werror -pedantic -fpic -g
 all: GAME.exe
 
 GAME.exe: main.c lib2048.a
-	$(CC) main.c -L. -l2048 -o GAME.exe $(CFLAGS) 
+	$(CC) main.c -L. -l2048 -o GAME.exe $(CFLAGS) -lncurses
 
 lib2048.a: CMD.o Gamelogic.o Init.o check_args.o randomcase.o
 	ar -rc $@ $^
