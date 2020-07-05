@@ -28,12 +28,12 @@ void Print_Cases(int row, int col, int** GameMatrix){
     int scrx=col/2,scry=row/2;
     for(int y=0 ;y<=3;y++){
         for(int x=0;x<=3;x++){
-            sprintf(str, "%d", GameMatrix[x][y]);
-            mvprintw(scry,scrx,str);
-            scry+=row;
+            sprintf(str, "%d", GameMatrix[x][y]); //converts the case value to string
+            mvprintw(scry,scrx,str); //prints the string to selected coordinates
+            scry+=row; //select next case
             refresh();
         }
-        scrx+=col;
+        scrx+=col; //select next row
         scry=row/2;
     }
 }
@@ -60,13 +60,38 @@ int mainCMD(int** GameMatrix){
         Print_Vertical_Boundaries(stdscr,row,col);
         Print_Cases(row,col,GameMatrix);
         refresh();
-        if(keypress== 'q') break;
-        if(keypress== 'a'){
-            GenCase (GameMatrix);
+        switch(keypress)
+        {
+            case 'q':
+                endwin();
+                return EXIT_SUCCESS;
+                break;
+
+            case 'a':
+                GenCase (GameMatrix);
+                break;
+            
+            case KEY_LEFT:
+                //move left
+                GenCase (GameMatrix);
+                break;
+
+            case KEY_RIGHT:
+                //move right
+                GenCase (GameMatrix);
+                break;
+
+            case KEY_UP:
+                //move up
+                GenCase (GameMatrix);
+                break;
+
+            case KEY_DOWN:
+                //move down
+                GenCase (GameMatrix);
+                break;
         }
     }
-    endwin();
-    return EXIT_SUCCESS;
 }
 
 
