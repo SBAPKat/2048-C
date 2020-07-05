@@ -28,3 +28,7 @@ randomcase.o: randomcase.c
 
 clean: 
 	rm *.o *.a *.exe
+
+run: GAME.exe
+	./GAME.exe
+	make clean
