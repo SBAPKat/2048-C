@@ -9,4 +9,7 @@ void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col);
 
 void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col);
 
+void Print_Cases(int row,int col,int** GameMatrix);
+
+
 #endif

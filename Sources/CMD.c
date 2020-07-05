@@ -1,4 +1,6 @@
 #include <ncurses.h>
+#include "randomcase.h"
+
 #define EXIT_SUCCESS 0
 void  Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col){
     int i, y;
@@ -19,7 +21,26 @@ void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col){
     }
 }
 
-int mainCMD(){
+void Print_Cases(int row, int col, int** GameMatrix){
+    col=row*2/4;
+    row=row/4;
+    char str[12];
+    int scrx=col/2,scry=row/2;
+    for(int y=0 ;y<=3;y++){
+        for(int x=0;x<=3;x++){
+            sprintf(str, "%d", GameMatrix[x][y]);
+            mvprintw(scry,scrx,str);
+            scry+=row;
+            refresh();
+        }
+        scrx+=col;
+        scry=row/2;
+    }
+}
+
+
+
+int mainCMD(int** GameMatrix){
     int keypress;
     int row, col;
     timeout(0);
@@ -27,14 +48,22 @@ int mainCMD(){
     raw(); //Control keys don't generate signals, line buffering disabled
     noecho(); //prevents keystrokes from being echo'ed to terminal
     keypad(stdscr, TRUE); //Allows reading of function keys (and arrow keys)
+    getmaxyx(stdscr,row,col);
+    Print_Horizontal_Boundaries(stdscr,row,col);
+    Print_Vertical_Boundaries(stdscr,row,col);
     while(1){
-        clear();
         getmaxyx(stdscr,row,col);
-        Print_Horizontal_Boundaries(stdscr,row,col);
-        Print_Vertical_Boundaries(stdscr,row,col);
         refresh();
         keypress = getch();
+        clear();
+        Print_Horizontal_Boundaries(stdscr,row,col);
+        Print_Vertical_Boundaries(stdscr,row,col);
+        Print_Cases(row,col,GameMatrix);
+        refresh();
         if(keypress== 'q') break;
+        if(keypress== 'a'){
+            GenCase (GameMatrix);
+        }
     }
     endwin();
     return EXIT_SUCCESS;
@@ -43,15 +72,3 @@ int mainCMD(){
 
 
 
-/*
-void printMatrix (int lineNumber, int columnNumber, int** matrix){
-    printf("_________________\n");
-	for (int i=0;i<lineNumber;i++){
-		for (int j=0;j<columnNumber;j++){
-			printf(" %d |",matrix[i][j]);
-		}
-		printf("\n");
-	}
-    printf("_________________\n");
-	return;
-}*/

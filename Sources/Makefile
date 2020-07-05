@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS= -Wall -Werror -pedantic -fpic -g
+CFLAGS= -Wall -pedantic -fpic -g
 
 all: GAME.exe
 
