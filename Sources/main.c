@@ -6,12 +6,10 @@
 
 int main(int argc, char** argv){
 	int** GameMatrix = generateMatrix(4,4);
-    int option,test=1;
+    int option;
     option = check_args (argc, argv);
     if(option==1) {
-        
-        while(test==1){
-            test=mainCMD (GameMatrix);
+        while(mainCMD (GameMatrix)){
             GameMatrix=generateMatrix(4,4);
         }
     }
