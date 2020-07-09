@@ -2,16 +2,8 @@
 #define CMD_H
 
 #include <ncurses.h>
+#include "CMDUtils.h"
 
 int mainCMD(int** GameMatrix);
 
-void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col);
-
-void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col);
-
-void Print_Cases(int row,int col,int** GameMatrix);
-
-void Update_UI(int** GameMatrix, WINDOW* stdscr);
-
-void Display_Defeat();
 #endif

@@ -6,7 +6,7 @@ all: GAME.exe
 GAME.exe: main.c lib2048.a
 	$(CC) main.c -L. -l2048 -o GAME.exe $(CFLAGS) -lncurses
 
-lib2048.a: CMD.o Gamelogic.o Init.o check_args.o randomcase.o
+lib2048.a: CMD.o Gamelogic.o Init.o check_args.o randomcase.o CMDUtils.o
 	ar -rc $@ $^
 	ranlib $@
 
@@ -24,6 +24,9 @@ check_args.o: check_args.c
 
 randomcase.o: randomcase.c 
 	$(CC) -c $< $(CFLAGS)
+
+CMDUtils.o: CMDUtils.c
+	$(CC) -c $<  -lncurses $(CFLAGS)
 
 
 clean: 
