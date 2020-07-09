@@ -40,7 +40,9 @@ void Print_Cases(int row, int col, int** GameMatrix){
     }
 }
 
-void Display_Defeat(int row,int col){
+void Display_Defeat(WINDOW* stdscr){
+    int row,col;
+    getmaxyx(stdscr,row,col);
     clear();
     mvprintw(row/2,(col-13)/2,"You have lost");
     mvprintw(row/2+1,(col-25)/2,"Press spacebar to restart");
@@ -49,28 +51,27 @@ void Display_Defeat(int row,int col){
     clear();
 }
 
+void Update_UI(int** GameMatrix, WINDOW* stdscr){
+    int row,col;
+    getmaxyx(stdscr,row,col);
+    clear();
+    Print_Horizontal_Boundaries(stdscr,row,col);
+    Print_Vertical_Boundaries(stdscr,row,col);
+    Print_Cases(row,col,GameMatrix);
+}
+
 
 
 int mainCMD(int** GameMatrix){
-    int keypress;
-    int row, col, number_case=0;
+    int number_case=0;
     initscr(); //initialises the ncurses screen
     raw(); //Control keys don't generate signals, line buffering disabled
     noecho(); //prevents keystrokes from being echo'ed to terminal
     keypad(stdscr, TRUE); //Allows reading of function keys (and arrow keys)
-    getmaxyx(stdscr,row,col);
-    Print_Horizontal_Boundaries(stdscr,row,col);
-    Print_Vertical_Boundaries(stdscr,row,col);
+    Update_UI(GameMatrix,stdscr);
+    refresh();
     while(1){
-        getmaxyx(stdscr,row,col);
-        refresh();
-        keypress = getch();
-        clear();
-        Print_Horizontal_Boundaries(stdscr,row,col);
-        Print_Vertical_Boundaries(stdscr,row,col);
-        Print_Cases(row,col,GameMatrix);
-        refresh();
-        switch(keypress)
+        switch(getch())
         {
             case 'q':
                 endwin();
@@ -79,7 +80,7 @@ int mainCMD(int** GameMatrix){
 
             case KEY_LEFT:
                 //number_case-=move left();
-                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                if(defeat (number_case)==1)  {Display_Defeat(stdscr);
                     endwin();
                     return 1;}
                 else GenCase (GameMatrix);
@@ -88,7 +89,7 @@ int mainCMD(int** GameMatrix){
 
             case KEY_RIGHT:
                 //number_case-=move right();
-                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                if(defeat (number_case)==1)  {Display_Defeat(stdscr);
                     endwin();
                     return 1;}
                 else GenCase (GameMatrix);
@@ -97,7 +98,7 @@ int mainCMD(int** GameMatrix){
 
             case KEY_UP:
                 //number_case-=move up();
-                if(defeat (number_case)==1)  {Display_Defeat(row,col);
+                if(defeat (number_case)==1)  {Display_Defeat(stdscr);
                     endwin();
                     return 1;}
                 else GenCase (GameMatrix);
@@ -106,7 +107,7 @@ int mainCMD(int** GameMatrix){
 
             case KEY_DOWN:
                 //number_case-=move down();
-                if(defeat (number_case)==1) {Display_Defeat(row,col);
+                if(defeat (number_case)==1) {Display_Defeat(stdscr);
                     endwin();
                     return 1;}
                 else GenCase (GameMatrix);
@@ -114,10 +115,10 @@ int mainCMD(int** GameMatrix){
                 break;
 
             case 'l':
-                Display_Defeat(row,col);
+                Display_Defeat(stdscr);
                 break;
         }
-        mvprintw(row-1, col/2, "There are %icases", number_case);
+        Update_UI(GameMatrix,stdscr);
         refresh();
     }
 }

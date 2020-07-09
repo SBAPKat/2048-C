@@ -11,5 +11,7 @@ void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col);
 
 void Print_Cases(int row,int col,int** GameMatrix);
 
+void Update_UI(int** GameMatrix, WINDOW* stdscr);
+
 void Display_Defeat();
 #endif
