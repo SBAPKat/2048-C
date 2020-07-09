@@ -1,7 +1,4 @@
-#include <ncurses.h>
-#include "randomcase.h"
-#include "Gamelogic.h"
-#include "Init.h"
+#include "CMD.h"
 
 #define EXIT_SUCCESS 0
 

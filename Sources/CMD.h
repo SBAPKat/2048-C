@@ -3,6 +3,10 @@
 
 #include <ncurses.h>
 #include "CMDUtils.h"
+#include "randomcase.h"
+#include "Gamelogic.h"
+
+#define EXIT_SUCCESS 0
 
 int mainCMD(int** GameMatrix);
 
