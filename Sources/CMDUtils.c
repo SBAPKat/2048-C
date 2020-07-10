@@ -70,5 +70,4 @@ void Def_Colors(){
 	init_pair(512,COLOR_YELLOW,COLOR_BLACK);		//512							*
 	init_pair(1024,COLOR_BLUE,COLOR_BLACK);			//1024							*
 	init_pair(2048,COLOR_MAGENTA,COLOR_BLACK);		//2048							*
-	init_pair(2049,COLOR_WHITE,COLOR_BLACK);		//>2048							*
 }
