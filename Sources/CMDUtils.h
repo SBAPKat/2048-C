@@ -13,4 +13,6 @@ void Print_Cases(int row,int col,int** GameMatrix); //Prints Cases values inside
 void Update_UI(int** GameMatrix, WINDOW* stdscr); //Calls the previous functions in order to update the entire UI
 
 void Display_Defeat(); //Displays the Defeat Screen
+
+void Def_Colors();
 #endif

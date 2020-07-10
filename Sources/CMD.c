@@ -6,9 +6,16 @@
 int mainCMD(int** GameMatrix){
     int number_case=0;
     initscr(); //initialises the ncurses screen
+	if(has_colors()==FALSE){
+		endwin();
+		printf("Your terminal does not support color");
+		return EXIT_SUCCESS;
+	}
+	start_color();
     raw(); //Control keys don't generate signals, line buffering disabled
     noecho(); //prevents keystrokes from being echo'ed to terminal
     keypad(stdscr, TRUE); //Allows reading of function keys (and arrow keys)
+	Def_Colors ();
     Update_UI (GameMatrix,stdscr);
     refresh();
     while(1){
