@@ -31,6 +31,7 @@ int mainCMD(int** GameMatrix){
                 if(defeat (number_case)==1)  {Display_Defeat (stdscr);	//If you lose					*
                     endwin();											//Quit ncurses					*
                     return 1;											//Return 1 will restart mainCMD	*
+				}
                 else GenCase (GameMatrix);								//If we don't, generate a case	*
                 number_case++;											//Update the number of cases	*
                 break;													//Exits the switch case			*
