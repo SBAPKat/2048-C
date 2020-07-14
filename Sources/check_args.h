@@ -7,7 +7,7 @@
  * @param argc - Argument count
  * @param *argv[] - Argument vector
  */
-int  check_args(int argc,char *argv[]);
+int  check_args(int argc,char *argv);
 
 
 
