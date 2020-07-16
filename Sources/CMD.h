@@ -2,9 +2,10 @@
 #define CMD_H
 
 #include <ncurses.h>
+
 #include "CMDUtils.h"
-#include "randomcase.h"
 #include "Gamelogic.h"
+#include "randomcase.h"
 
 #define EXIT_SUCCESS 0
 

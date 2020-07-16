@@ -3,16 +3,21 @@
 
 #include <ncurses.h>
 
+// Prints horizontal game boundaries
+void Print_Horizontal_Boundaries(WINDOW* stdscr, int row, int col);
 
-void Print_Horizontal_Boundaries(WINDOW* stdscr,int row,int col); //Prints horizontal game boundaries
+// Prints vertical game boundaries
+void Print_Vertical_Boundaries(WINDOW* stdscr, int row, int col);
 
-void Print_Vertical_Boundaries(WINDOW* stdscr,int row,int col); //Prints vertical game boundaries
+// Prints Cases values inside the boundaries
+void Print_Cases(int row, int col, int** GameMatrix);
 
-void Print_Cases(int row,int col,int** GameMatrix); //Prints Cases values inside the boundaries
+// Calls the previous functions in order to update the entire UI
+void Update_UI(int** GameMatrix, WINDOW* stdscr);
 
-void Update_UI(int** GameMatrix, WINDOW* stdscr); //Calls the previous functions in order to update the entire UI
+// Displays the Defeat Screen
+void Display_Defeat();
 
-void Display_Defeat(); //Displays the Defeat Screen
-
+// Defines the colors to be used in the game
 void Def_Colors();
 #endif

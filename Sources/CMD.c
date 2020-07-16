@@ -27,7 +27,7 @@ int mainCMD(int** GameMatrix){
                 break;
 
             case KEY_LEFT:
-                //number_case-=move left();
+				//TODO: MOVEMENT function
                 if(defeat (number_case)==1)  {Display_Defeat (stdscr);	//If you lose					*
                     endwin();											//Quit ncurses					*
                     return 1;											//Return 1 will restart mainCMD	*
@@ -37,7 +37,7 @@ int mainCMD(int** GameMatrix){
                 break;													//Exits the switch case			*
 
             case KEY_RIGHT:
-                //number_case-=move right();
+				//TODO: MOVEMENT function
                 if(defeat (number_case)==1)  {Display_Defeat (stdscr);	//If you lose					*
                     endwin();                                         	//Quit ncurses					*
                     return 1;}                                        	//Return 1 will restart mainCMD	*
@@ -46,7 +46,7 @@ int mainCMD(int** GameMatrix){
                 break;                                                	//Exits the switch case			*
 
             case KEY_UP:
-                //number_case-=move up();
+				//TODO: MOVEMENT function
                 if(defeat (number_case)==1)  {Display_Defeat (stdscr);	//If you lose					*
                     endwin();                                         	//Quit ncurses					*
                     return 1;}                                        	//Return 1 will restart mainCMD	*
@@ -55,7 +55,7 @@ int mainCMD(int** GameMatrix){
                 break;                                                	//Exits the switch case			*
 
             case KEY_DOWN:
-                //number_case-=move down();
+				//TODO: MOVEMENT function
                 if(defeat (number_case)==1) {Display_Defeat (stdscr);	//If you lose					*
                     endwin();                                        	//Quit ncurses					*
                     return 1;}                                       	//Return 1 will restart mainCMD	*
