@@ -13,6 +13,16 @@ void printMatrix (int lineNumber, int columnNumber, int** matrix){
 	return;
 }
 
+void postmove(int** GameMatrix){
+	int y,i;
+	for(i=0;i<=3;i++){
+		for(y=0;y<=3;y++){
+			if(GameMatrix[i][y]%2 !=0){
+				GameMatrix[i][y]-=1;
+			}
+		}
+	}
+}
 
 /*
  * This series of protocols are used to print in color, but only work if we are on specified OS

@@ -10,6 +10,8 @@
  * @param matrix - the matrix [lineNumber X columnNumber] to print
  */
 void printMatrix(int lineNumber, int columnNumber, int** matrix);
+void postmove(int** GameMatrix);
+int move(int** GameMatrix, int direction);
 
 /*
  * This series of protocol is used to print in color, but it only works if we
